@@ -1,29 +1,17 @@
-import { useState } from "react";
-import "./LoginComponent.css";
-
 export default function LoginComponent({ visible, setLoggedIn, setUsername }) {
-  const [usernameInput, setUsernameInput] = useState("");
-
   return (
     <div className={visible ? "" : "hidden"}>
-      <label htmlFor="username">Username</label>
-      <input
-        id="username"
-        type="text"
-        value={usernameInput}
-        onChange={(ev) => {
-          setUsernameInput(ev.target.value);
-        }}
-      />
+      <h3>Login</h3>
+      <input id="username" type="text" />
       <button
         onClick={() => {
+          let text = document.querySelector("#username").value;
+          setUsername(text);
           setLoggedIn(true);
-          setUsername(usernameInput);
         }}
       >
         Log In
       </button>
-      <br />
     </div>
   );
 }
